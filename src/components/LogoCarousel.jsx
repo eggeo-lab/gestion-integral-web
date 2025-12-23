@@ -29,7 +29,7 @@ const LogoCarousel = () => {
           {allLogos.map((logo, index) => (
             <div
               key={index}
-              className="flex-shrink-0 mx-8 flex items-center justify-center"
+              className="flex-shrink-0 mx-4 flex items-center justify-center"
             >
               <img
                 src={logo.src}
