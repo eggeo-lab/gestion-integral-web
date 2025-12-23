@@ -31,6 +31,12 @@
 
 @layer utilities {
   .animate-scroll {
+    animation: scroll 6s linear infinite;
+  }
+}
+
+@media (min-width: 768px) {
+  .animate-scroll {
     animation: scroll 25s linear infinite;
   }
 }
