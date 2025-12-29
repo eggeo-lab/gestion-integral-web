@@ -20,8 +20,24 @@ const Services = () => {
       ],
     },
     {
+      title: 'Localización',
+      subtitle: 'Localización de Obras Privadas',
+      desc: 'Resolución de Localización · Uso del Suelo',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
+      items: [
+        'Consulta de zonificación y uso del suelo (Ordenanza 8133/85)',
+        'Verificación de patrón industrial permitido para la actividad',
+        'Análisis de compatibilidad de la actividad con la zona',
+        'Estudio de factibilidad de localización',
+        'Gestión del expediente ante Obras Privadas y Uso del Suelo',
+        'Obtención de la Resolución de Localización',
+        'Coordinación con trámites de Habilitación de Negocios',
+        'Asesoramiento para industrias, depósitos, talleres y actividades especiales',
+      ],
+    },
+    {
       title: 'Gestión ambiental',
-      subtitle: 'GESTIÓN AMBIENTAL',
+      subtitle: 'Gestión ambiental',
       desc: 'Peligrosos · Patógenos · Residuos Sólidos Urbanos',
       image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&q=80',
       items: [
@@ -85,13 +101,32 @@ const Services = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {services.map((s, i) => (
-            <button key={i} onClick={() => setActiveTab(i)}
-              className={`px-5 py-3 text-sm font-medium rounded transition-all ${activeTab === i ? 'text-brand-cyan bg-white/10 border-b-2 border-brand-cyan' : 'text-white/70 hover:text-white'}`}>
-              {s.title}
-            </button>
-          ))}
+       {/* Tabs - scroll horizontal en mobile */}
+        <div className="relative mb-10">
+          {/* Botón scroll derecha */}
+          <button 
+            onClick={() => {
+              const container = document.getElementById('tabs-container');
+              container.scrollBy({ left: 150, behavior: 'smooth' });
+            }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 md:hidden z-10"
+          >
+            <svg className="w-6 h-6 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+            </svg>
+          </button>
+          
+          <div 
+            id="tabs-container"
+            className="flex md:flex-wrap md:justify-center gap-2 overflow-x-auto scrollbar-hide pb-2 md:pb-0 pr-10 md:pr-0"
+          >
+            {services.map((s, i) => (
+              <button key={i} onClick={() => setActiveTab(i)}
+                className={`px-5 py-3 text-sm font-medium rounded transition-all whitespace-nowrap flex-shrink-0 ${activeTab === i ? 'text-brand-cyan bg-white/10 border-b-2 border-brand-cyan' : 'text-white/70 hover:text-white'}`}>
+                {s.title}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Content */}
